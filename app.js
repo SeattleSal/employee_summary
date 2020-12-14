@@ -1,3 +1,5 @@
+// app.js - create employee summary
+// dependencies
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -11,14 +13,14 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 const employeeList = [];
-// const idArray = [];
 
-// function for ask user for manager info
+// askUserforManagerInfo() - ask user for manager info and create Manager
+// each team has one Manager
 function askUserforManagerInfo() {
     return inquirer.prompt([
         {
             type: 'input',
-            message: `Enter manager's name.`,
+            message: `Enter manager's name: `,
             name: `mgrName`,
             validate: answer => {
                 if (answer !== "") {
@@ -29,38 +31,39 @@ function askUserforManagerInfo() {
         },
         {
             type: 'input',
-            message: "Enter manager's ID",
+            message: "Enter manager's ID: ",
             name: "mgrId"
         },
         {
             type: 'input',
-            message: `Enter manager email.`,
+            message: `Enter manager email: `,
             name: `mgrEmail`
         },
         {
             type: 'input',
-            message: "Enter manager office number.",
+            message: "Enter manager office number: ",
             name: "officeNum"
         }
     ]).then((response) => {
-        //create manager
+        //create Manager
         const newManager = new Manager(response.mgrName, response.mgrId, response.mgrEmail, response.officeNum);
         employeeList.push(newManager);
         askForNextEmployee();
     }); 
 }
 
-// function for ask for next employee type
+// askForNextEmployee() - ask user for next employee type (Intern, Engineer) or no more employees
 function askForNextEmployee(){
     return inquirer.prompt([
         {
             type: "list",
             name: "nextEmployee",
-            message: "Choose next employee type",
+            message: "Choose next employee type or No more employees.",
             choices: ["Engineer", "Intern", "No more employees"]
 
         }
     ]).then((results) =>{
+        printLine();
         switch (results.nextEmployee) {
             case "Engineer":
                 askUserForEngineerInfo();
@@ -76,13 +79,13 @@ function askForNextEmployee(){
     })
 }
 
-// function for ask user for engineer info
+// askUserForEngineerInfo() - ask user for engineer info and create Engineer
 function askUserForEngineerInfo(){
     return inquirer.prompt([
         {
             name: `engineerName`,
             type: 'input',
-            message: `Enter Engineer's name.`,
+            message: `Enter Engineer's name: `,
             validate: answer => {
                 if (answer !== "") {
                     return true;
@@ -93,17 +96,17 @@ function askUserForEngineerInfo(){
         {
             name: "engineerId",
             type: 'input',
-            message: "Enter Engineer's ID"
+            message: "Enter Engineer's ID: "
         },
         {
             name: `engineerEmail`,
             type: 'input',
-            message: `Enter Engineer's email.`
+            message: `Enter Engineer's email: `
         },
         {
             name: "github",
             type: 'input',
-            message: "Enter Engineer's github."
+            message: "Enter Engineer's github: "
         }
     ]).then((response) => {
         //create Engineer
@@ -114,13 +117,13 @@ function askUserForEngineerInfo(){
 
 }
 
-// function for ask user for intern info
+// askUserForInternInfo() - ask user for intern info and create Intern
 function askUserForInternInfo(){
     return inquirer.prompt([
         {
             name: `internName`,
             type: 'input',
-            message: `Enter Intern's name.`,
+            message: `Enter Intern's name: `,
             validate: answer => {
                 if (answer !== "") {
                     return true;
@@ -131,17 +134,17 @@ function askUserForInternInfo(){
         {
             name: "internId",
             type: 'input',
-            message: "Enter Intern's ID"
+            message: "Enter Intern's ID: "
         },
         {
             name: `internEmail`,
             type: 'input',
-            message: `Enter Intern's email.`
+            message: `Enter Intern's email:`
         },
         {
             name: "school",
             type: 'input',
-            message: "Enter Intern's School."
+            message: "Enter Intern's School: "
         }
     ]).then((response) => {
         //create Intern
@@ -151,7 +154,7 @@ function askUserForInternInfo(){
     }); 
 }
 
-// generate HTML file based on list of employees
+// createHTMLFile() - generate HTML file based on list of employees
 function createHMTLFile() {
     let htmlString = render(employeeList);
     fs.writeFile(outputPath, htmlString, (err) =>{
@@ -160,12 +163,18 @@ function createHMTLFile() {
     });
 }
 
-function init(){
+// printLine() - create line to separate print outs
+function printLine () {
     console.log("-----------------------------------");
+}
 
+// init() - display welcome and call askUserforManagerInfo()
+function init(){
+    printLine();
     console.log("Wecome to Employee Summary creator!");
-    console.log("-----------------------------------");
+    printLine();
     askUserforManagerInfo();
 }
 
+// start program
 init();
