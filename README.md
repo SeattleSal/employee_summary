@@ -32,7 +32,7 @@ The application prompts the user to build an engineering team consisting of one 
 
 ## Output
 Example of team.html output:
-![Example Team Output](./assets/output_ex.jpg)
+![Example Team Output](./assets/output_ex.JPG)
 
 
 ## Tests
