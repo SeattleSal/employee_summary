@@ -5,15 +5,16 @@
 * [Description](#description)
 * [Dependencies](#dependencies)
 * [Usage](#usage)
+* [Output](#output)
 * [Tests](#tests)
-* [Questions](#questions)
+* [Links](#links)
 * [License](#license)
 
 ## Description
-A node CLI that takes in user input about employees and generates an HTML webpage that displays summaries for each employee. You will build a software engineering team generator command line application. The application will prompt the user for information about the team manager and then information about the team members. The user can input any number of team members, and they may be a mix of engineers and interns.
+A node CLI that takes in user input about employees and generates an HTML webpage that displays summaries for each employee. The application will prompt the user for information about the team manager and then information about the team members. The user can input any number of team members, and they may be a mix of engineers and interns.
 
 ## Dependencies
-The dependencies are, [jest](https://jestjs.io/) for running the provided tests, and [inquirer](https://www.npmjs.com/package/inquirer) for collecting input from the user. There is a `package.json`, the following commands should be run for dependencies:
+The dependencies are, [jest](https://jestjs.io/) for running the provided tests, and [inquirer](https://www.npmjs.com/package/inquirer) for collecting input from the user. There is a `package.json`, the following commands should be run to install dependencies:
 
 ```bash
 npm i
@@ -25,23 +26,29 @@ Run the application by using the following command:
 node app.js
 ```
 
-The application prompts the user to build an engineering team consisting of one manager and any number of engineers and interns. Output is an HTML file `team.html` page in the `output` directory, that displays a nicely formatted team roster..
+The application prompts the user to build an engineering team consisting of one manager and any number of engineers and interns. Output is an HTML file `team.html` page in the `output` directory, that displays a nicely formatted team roster.
+
+[![Employee Summary Walkthrough](./assets/emp_sum_wt.gif)](https://drive.google.com/file/d/1NQ9flVJs1hh7ZyP5N8TeQPLjaCPJfxVy/view)
+
+## Output
+Example of team.html output:
+![Example Team Output](./assets/output_ex.jpg)
+
 
 ## Tests
-Tests were provided to build out classes and are located in teh test folder. The following commands should be run for testing: 
+Tests were provided to build out classes and are located in the test folder. The following commands should be run for testing: 
 ```bash
 npm run test
 ```
 
-## Questions
-* For additional questions please contact SeattleSal at sally.perez@gmail.com
+## Links
 * Github Link: https://github.com/SeattleSal
 
 ## License
 
 MIT License
 
-Copyright (c) [2020] [Employee Summary]
+Copyright (c) [2020] [Sally Perez]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
