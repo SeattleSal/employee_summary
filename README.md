@@ -42,7 +42,7 @@ npm run test
 ```
 
 ## Links
-* Github Link: https://github.com/SeattleSal
+* Github Link: https://github.com/SeattleSal/employee_summary
 
 ## License
 
